@@ -10,7 +10,8 @@ import {
     NavbarDivider,
     NavbarGroup,
     NavbarHeading,
-    AnchorButton
+    AnchorButton,
+    ButtonGroup,
 } from "@blueprintjs/core";
 import './NavBar.css';
 import { ReactComponent as GitHub } from '../Octicons-mark-github.svg';
@@ -18,7 +19,7 @@ import { ReactComponent as LinkedIn } from '../iconmonstr-linkedin-3.svg';
 import { ReactComponent as Email } from '../iconmonstr-email-4.svg';
 import { useState } from 'react';
 
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 
 interface DarkModeProps {
@@ -33,8 +34,19 @@ const navstate = {
 }
 
 const NavBar: React.FC<DarkModeProps> = ({ darkMode, setDarkMode }) => {
-  const [navState, setNavState] = useState(navstate.about);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [navState, setNavState] = useState(() => {
+      switch (location.pathname) {
+        case "/":
+          return navstate.about;
+        case "/projects":
+          return navstate.projects;
+        case "/resume":
+          return navstate.resume;
+      }
+  });
 
   const handlePageChange = (state: number) => {
     console.log("call ahndle page change iwth state ", state);
@@ -54,24 +66,28 @@ const NavBar: React.FC<DarkModeProps> = ({ darkMode, setDarkMode }) => {
 
   return (
     <div className="navbar">
-      <Navbar>
+      <Navbar fixedToTop>
           <NavbarGroup align={'left'}>
               <NavbarHeading>Krishna Narayan</NavbarHeading>
               <NavbarDivider />
-              <Button minimal active={navState == navstate.about} icon="user" text="About" onClick={() => {handlePageChange(navstate.about)}}/>
-              <Button minimal active={navState == navstate.projects} icon="projects" text="Projects" onClick={() => {handlePageChange(navstate.projects)}}/>
-              <Button minimal active={navState == navstate.resume} icon="application" text="Resume" onClick={() => {handlePageChange(navstate.resume)}}/>
+              <ButtonGroup minimal={true}>
+                <Button active={navState == navstate.about} icon="user" text="About" onClick={() => {handlePageChange(navstate.about)}}/>
+                <Button active={navState == navstate.resume} icon="application" text="Resume" onClick={() => {handlePageChange(navstate.resume)}}/>
+                <Button active={navState == navstate.projects} icon="projects" text="Projects" onClick={() => {handlePageChange(navstate.projects)}}/>
+              </ButtonGroup>
           </NavbarGroup>
           <NavbarGroup align={'right'}>
-            <a href="https://github.com/narayan-krishna">
-              <Button minimal icon={<GitHub />} />
-            </a>
-            <a href="https://www.linkedin.com/in/krishna-narayan">
-              <Button minimal icon={<LinkedIn />} />
-            </a>
-            <Button minimal icon={<Email />} />
-            <NavbarDivider />
-            <Button minimal icon={darkMode ? "flash" : "moon"} onClick={() => {setDarkMode(!darkMode)}}/>
+            <ButtonGroup minimal={true}>
+              <a href="https://github.com/narayan-krishna" target="_blank">
+                <Button minimal icon={<GitHub />} />
+              </a>
+              <a href="https://www.linkedin.com/in/krishna-narayan" target="_blank">
+                <Button minimal icon={<LinkedIn />} />
+              </a>
+              <Button minimal icon={<Email />} />
+            </ ButtonGroup>
+              <NavbarDivider />
+              <Button minimal icon={darkMode ? "flash" : "moon"} onClick={() => {setDarkMode(!darkMode)}}/>
           </NavbarGroup>
       </Navbar>
     </div>
