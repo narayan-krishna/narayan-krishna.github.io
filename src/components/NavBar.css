@@ -1,0 +1,9 @@
+.navbar {
+    display: block;
+    padding: 30px;
+    position: fixed;
+    alignItems: center;
+    z-index: 1;
+    bottom: 0px;
+    right: 0px;
+}

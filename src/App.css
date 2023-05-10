@@ -1,5 +1,19 @@
+html,body { 
+  height: 100%; 
+  margin: 0;
+}
+
 .App {
-  text-align: center;
+}
+
+.body-padding {
+  position: absolute;
+  /* padding-left: 100px; */
+  /* padding-right: 100px; */
+  /* padding-bottom: 100px; */
+  padding: 200px;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
