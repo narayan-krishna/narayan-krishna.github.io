@@ -18,48 +18,33 @@ import { ReactComponent as GitHub } from '../Octicons-mark-github.svg';
 import { ReactComponent as LinkedIn } from '../iconmonstr-linkedin-3.svg';
 import { ReactComponent as Email } from '../iconmonstr-email-4.svg';
 import { useState } from 'react';
-
+import { navstate } from '../App';
 import {useNavigate, useLocation} from 'react-router-dom';
 
 
 interface DarkModeProps {
   darkMode: boolean,
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+  navState: number,
+  setNavState: React.Dispatch<React.SetStateAction<number>>
+  aboutRef: React.MutableRefObject<null | HTMLDivElement>
+  resumeRef: React.MutableRefObject<null | HTMLDivElement>
+  projectsRef: React.MutableRefObject<null | HTMLDivElement>
 }
 
-const navstate = {
-  about: 1,
-  projects: 2,
-  resume: 3,
-}
-
-const NavBar: React.FC<DarkModeProps> = ({ darkMode, setDarkMode }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [navState, setNavState] = useState(() => {
-      switch (location.pathname) {
-        case "/":
-          return navstate.about;
-        case "/projects":
-          return navstate.projects;
-        case "/resume":
-          return navstate.resume;
-      }
-  });
-
+const NavBar: React.FC<DarkModeProps> = ({ darkMode, setDarkMode, navState, setNavState, aboutRef, resumeRef, projectsRef }) => {
   const handlePageChange = (state: number) => {
     console.log("call ahndle page change iwth state ", state);
     setNavState(state);
     switch (state) {
       case navstate.about:
-        navigate('/');
+        if (aboutRef.current) aboutRef.current.scrollIntoView();
         break;
       case navstate.projects:
-        navigate('/projects');
+        if (projectsRef.current) projectsRef.current.scrollIntoView();
         break;
       case navstate.resume:
-        navigate('/resume');
+        if (resumeRef.current) resumeRef.current.scrollIntoView();
         break;
     };
   }

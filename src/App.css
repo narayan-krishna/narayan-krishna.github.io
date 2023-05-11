@@ -1,11 +1,10 @@
 .App {
   width: 100vw; 
   height: 100vh; 
-  boxShadow: 'none'
 }
 
 .body-padding {
-  display: flex;
+  display: 'block';
   overflow: hidden;
 }
 
