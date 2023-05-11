@@ -3,11 +3,6 @@
   height: 100vh; 
 }
 
-.body-padding {
-  display: 'block';
-  overflow: hidden;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;

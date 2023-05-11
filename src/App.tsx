@@ -27,13 +27,10 @@ function App() {
   const projectsRef = useRef(null);
 
   return (
-    <div className="App"
-         style={darkMode ? {background: Colors.DARK_GRAY1} : 
-                           {background: Colors.LIGHT_GRAY4}}>
+    <div className="App">
       <div className={darkMode ? "bp4-dark" : "bp4-light" } >
         <NavBar darkMode={darkMode} setDarkMode={setDarkMode} navState={navState} setNavState={setNavState} aboutRef={aboutRef} resumeRef={resumeRef} projectsRef={projectsRef}/>
-        <div className="body-padding"
-         style={darkMode ? {background: Colors.DARK_GRAY2} : 
+        <div style={darkMode ? {background: Colors.DARK_GRAY2} : 
                            {background: Colors.LIGHT_GRAY4}}>
           <div ref={aboutRef}>
             <Home />
@@ -41,7 +38,7 @@ function App() {
           <div ref={resumeRef}>
             <Resume />
           </div>
-          <div ref={projectsRef}>
+          <div ref={projectsRef} style={{display:"flex"}}>
             <Projects />
           </div>
         </div>

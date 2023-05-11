@@ -99,7 +99,7 @@ const Launcher: React.FC = () => (
 );
 
 const WizBot: React.FC = () => (
-    <div>
+    <div >
       <div className="bp4-text-large bp4-running-text {{.modifier}}">
         WizBot is a discord bot used for aggregating exam and homework questions amonst students for studying purposes. The following is a repurposing of the presentation me and fellow classmates made on WizBot:
 
@@ -126,7 +126,7 @@ const WizBot: React.FC = () => (
             <li>You got a question right on a test, and want to let others know what the right answer is. Contribute that answer for that question, or give it a like if it already exists</li>
           </ul>
 
-        <div style={{display:"flex"}}>
+        <div style={{display:"flex", overflow: "hidden"}}>
           <div style={{padding:10}}>
             <h3>Schema Diagram</h3>
             <img alt="Schema Diagram" src={SchemaDiagram} />
