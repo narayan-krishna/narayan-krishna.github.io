@@ -19,8 +19,6 @@ import { ReactComponent as LinkedIn } from '../iconmonstr-linkedin-3.svg';
 import { ReactComponent as Email } from '../iconmonstr-email-4.svg';
 import { useState } from 'react';
 import { navstate } from '../App';
-import {useNavigate, useLocation} from 'react-router-dom';
-
 
 interface DarkModeProps {
   darkMode: boolean,

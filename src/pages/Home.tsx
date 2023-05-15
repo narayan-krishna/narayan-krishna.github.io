@@ -7,11 +7,25 @@ function Home() {
   return (
     <div className="Home">
       <div className="bp4-monospace-text {{.modifier}}">
-        <h1>
-          Hi! I'm Krishna.
-        </h1>
+        <div>
+          <h1 style={{fontSize:60}}>
+            Krishna Narayan
+          </h1>
+          <p className="bp4-text-large bp4-running-text {{.modifier}}">
+            ICONS
+          <div>
+            650.918.2995
+          </div>
+          <div>
+            knarayan720@gmail.com
+          </div>
+          </p>
+          <p className="bp4-text-large bp4-running-text {{.modifier}}">
+            I write software to make everyday life easier.
+          </p>
+        </div>
         <p className="bp4-text-large bp4-running-text {{.modifier}}">
-          I'm a 22-year old software engineer from Hillsborough, California. 
+          I'm a 22-year old software engineer from the California Bay Area.
           I recently graduated from Chapman University, where I received a B.S. in Computer Science and a B.F.A. in Animation and Visual Effects.
           After graduation, I worked at Nuro on the teleoperation controls team. During my time at Nuro, I worked on devices drivers and calibration systems for hardware to drive AVs.
         </p>
